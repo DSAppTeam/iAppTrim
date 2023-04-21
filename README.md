@@ -11,7 +11,14 @@
 iAppTrim
 
 针对这些手动操作的优化包体大小方法，我们设计了iAppTrim这一款Mac App，只需要打开App，选择需要优化的项目，即可一键自动优化。
-http://g.fp.ps.netease.com/km/file/64364e882ef6ee03e92fedf0JmsYwTgs04
+https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/包大小配置示例.png
+https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/编译速度.png
+https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/是否存在图片检测示例.png
+https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/压缩图片示例.png
+https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/重复图片检测不存在示例.png
+https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/重复图片检测示例.png
+<img src="https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/App首页示例.png" width = "360" height = "790"/>
+![App首页示例.png](https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/App首页示例.png)
 
 
 目前主要支持以下功能：
