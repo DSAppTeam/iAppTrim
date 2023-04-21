@@ -9,6 +9,7 @@
 再如编译配置项，有时候配置项会被误改，或者因为Xcode的升级带来了新的可优化包体大小的配置项，我们就需要去项目中找到并进行修改。
 
 ![AppIcon.png](https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/AppIcon.png)
+[iAppTrim](https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/iAppTrim.zip)
 
 针对这些手动操作的优化包体大小方法，我们设计了iAppTrim这一款Mac App，只需要打开App，选择需要优化的项目，即可一键自动优化。
 
