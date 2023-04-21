@@ -8,7 +8,8 @@
 
 再如编译配置项，有时候配置项会被误改，或者因为Xcode的升级带来了新的可优化包体大小的配置项，我们就需要去项目中找到并进行修改。
 
-iAppTrim
+```iAppTrim```
+![AppIcon.png](https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/AppIcon.png)
 
 针对这些手动操作的优化包体大小方法，我们设计了iAppTrim这一款Mac App，只需要打开App，选择需要优化的项目，即可一键自动优化。
 
@@ -34,7 +35,7 @@ iAppTrim
 
 （3）重复png图片检测，用于删除多余重复的图片，使用Vision框架检测
 
-可以输出总数量以及预计收益哦：
+    ```可以输出总数量以及预计收益哦```
 ![重复图片检测示例.png](https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/重复图片检测示例.png)
 
 
