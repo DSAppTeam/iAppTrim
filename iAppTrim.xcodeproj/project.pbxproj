@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		42CE0C5A29F28BD0008D580D /* iAppTrimApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C5929F28BD0008D580D /* iAppTrimApp.swift */; };
+		42CE0C5E29F28BD2008D580D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CE0C5D29F28BD2008D580D /* Assets.xcassets */; };
+		42CE0C6129F28BD2008D580D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CE0C6029F28BD2008D580D /* Preview Assets.xcassets */; };
+		42CE0C6329F28BD2008D580D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C6229F28BD2008D580D /* Persistence.swift */; };
+		42CE0C6629F28BD2008D580D /* iAppTrim.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C6429F28BD2008D580D /* iAppTrim.xcdatamodeld */; };
+		42CE0C7329F28C72008D580D /* ConfigSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C6F29F28C72008D580D /* ConfigSettingManager.swift */; };
+		42CE0C7429F28C72008D580D /* tinypngCompress.js in Resources */ = {isa = PBXBuildFile; fileRef = 42CE0C7029F28C72008D580D /* tinypngCompress.js */; };
+		42CE0C7729F28D78008D580D /* CompileOptimizeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C7629F28D78008D580D /* CompileOptimizeManager.swift */; };
+		42CE0C7929F28D7F008D580D /* PngCompressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C7829F28D7F008D580D /* PngCompressManager.swift */; };
+		42CE0C7B29F28D85008D580D /* ImageSimilarCheckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C7A29F28D85008D580D /* ImageSimilarCheckManager.swift */; };
+		42CE0C8029F2960F008D580D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C7F29F2960F008D580D /* ContentView.swift */; };
+		EA466224EF845DE68603CC4D /* Pods_iAppTrim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02905DA33E7D85CE20038866 /* Pods_iAppTrim.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		02905DA33E7D85CE20038866 /* Pods_iAppTrim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iAppTrim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2425D26A12FA73AEE8E682B6 /* Pods-iAppTrim.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAppTrim.debug.xcconfig"; path = "Target Support Files/Pods-iAppTrim/Pods-iAppTrim.debug.xcconfig"; sourceTree = "<group>"; };
+		42CE0C5629F28BD0008D580D /* iAppTrim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAppTrim.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42CE0C5929F28BD0008D580D /* iAppTrimApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iAppTrimApp.swift; sourceTree = "<group>"; };
+		42CE0C5D29F28BD2008D580D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		42CE0C6029F28BD2008D580D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		42CE0C6229F28BD2008D580D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		42CE0C6529F28BD2008D580D /* iAppTrim.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iAppTrim.xcdatamodel; sourceTree = "<group>"; };
+		42CE0C6729F28BD2008D580D /* iAppTrim.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iAppTrim.entitlements; sourceTree = "<group>"; };
+		42CE0C6F29F28C72008D580D /* ConfigSettingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigSettingManager.swift; sourceTree = "<group>"; };
+		42CE0C7029F28C72008D580D /* tinypngCompress.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = tinypngCompress.js; sourceTree = "<group>"; };
+		42CE0C7629F28D78008D580D /* CompileOptimizeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompileOptimizeManager.swift; sourceTree = "<group>"; };
+		42CE0C7829F28D7F008D580D /* PngCompressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PngCompressManager.swift; sourceTree = "<group>"; };
+		42CE0C7A29F28D85008D580D /* ImageSimilarCheckManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSimilarCheckManager.swift; sourceTree = "<group>"; };
+		42CE0C7F29F2960F008D580D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7FDE1E57A21BD7BC2B264678 /* Pods-iAppTrim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAppTrim.release.xcconfig"; path = "Target Support Files/Pods-iAppTrim/Pods-iAppTrim.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		42CE0C5329F28BD0008D580D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA466224EF845DE68603CC4D /* Pods_iAppTrim.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		008D313DB8F3E0B226AE6794 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02905DA33E7D85CE20038866 /* Pods_iAppTrim.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		42CE0C4D29F28BD0008D580D = {
+			isa = PBXGroup;
+			children = (
+				42CE0C5829F28BD0008D580D /* iAppTrim */,
+				42CE0C5729F28BD0008D580D /* Products */,
+				D8F9914E5D8445BA4C9B909F /* Pods */,
+				008D313DB8F3E0B226AE6794 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		42CE0C5729F28BD0008D580D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42CE0C5629F28BD0008D580D /* iAppTrim.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		42CE0C5829F28BD0008D580D /* iAppTrim */ = {
+			isa = PBXGroup;
+			children = (
+				42CE0C5929F28BD0008D580D /* iAppTrimApp.swift */,
+				42CE0C6229F28BD2008D580D /* Persistence.swift */,
+				42CE0C7E29F29601008D580D /* View */,
+				42CE0C7529F28D4E008D580D /* Logic */,
+				42CE0C5D29F28BD2008D580D /* Assets.xcassets */,
+				42CE0C7029F28C72008D580D /* tinypngCompress.js */,
+				42CE0C6729F28BD2008D580D /* iAppTrim.entitlements */,
+				42CE0C6429F28BD2008D580D /* iAppTrim.xcdatamodeld */,
+				42CE0C5F29F28BD2008D580D /* Preview Content */,
+			);
+			path = iAppTrim;
+			sourceTree = "<group>";
+		};
+		42CE0C5F29F28BD2008D580D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				42CE0C6029F28BD2008D580D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		42CE0C7529F28D4E008D580D /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				42CE0C7829F28D7F008D580D /* PngCompressManager.swift */,
+				42CE0C6F29F28C72008D580D /* ConfigSettingManager.swift */,
+				42CE0C7629F28D78008D580D /* CompileOptimizeManager.swift */,
+				42CE0C7A29F28D85008D580D /* ImageSimilarCheckManager.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		42CE0C7E29F29601008D580D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42CE0C7F29F2960F008D580D /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D8F9914E5D8445BA4C9B909F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2425D26A12FA73AEE8E682B6 /* Pods-iAppTrim.debug.xcconfig */,
+				7FDE1E57A21BD7BC2B264678 /* Pods-iAppTrim.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42CE0C5529F28BD0008D580D /* iAppTrim */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42CE0C6A29F28BD2008D580D /* Build configuration list for PBXNativeTarget "iAppTrim" */;
+			buildPhases = (
+				228862218A409C1920221D1A /* [CP] Check Pods Manifest.lock */,
+				42CE0C5229F28BD0008D580D /* Sources */,
+				42CE0C5329F28BD0008D580D /* Frameworks */,
+				42CE0C5429F28BD0008D580D /* Resources */,
+				EAA3FDECCF648BA4F066CE35 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iAppTrim;
+			productName = iAppTrim;
+			productReference = 42CE0C5629F28BD0008D580D /* iAppTrim.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		42CE0C4E29F28BD0008D580D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					42CE0C5529F28BD0008D580D = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 42CE0C5129F28BD0008D580D /* Build configuration list for PBXProject "iAppTrim" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 42CE0C4D29F28BD0008D580D;
+			productRefGroup = 42CE0C5729F28BD0008D580D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42CE0C5529F28BD0008D580D /* iAppTrim */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42CE0C5429F28BD0008D580D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42CE0C6129F28BD2008D580D /* Preview Assets.xcassets in Resources */,
+				42CE0C7429F28C72008D580D /* tinypngCompress.js in Resources */,
+				42CE0C5E29F28BD2008D580D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		228862218A409C1920221D1A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iAppTrim-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAA3FDECCF648BA4F066CE35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iAppTrim/Pods-iAppTrim-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iAppTrim/Pods-iAppTrim-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iAppTrim/Pods-iAppTrim-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42CE0C5229F28BD0008D580D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42CE0C6329F28BD2008D580D /* Persistence.swift in Sources */,
+				42CE0C7B29F28D85008D580D /* ImageSimilarCheckManager.swift in Sources */,
+				42CE0C7729F28D78008D580D /* CompileOptimizeManager.swift in Sources */,
+				42CE0C7929F28D7F008D580D /* PngCompressManager.swift in Sources */,
+				42CE0C8029F2960F008D580D /* ContentView.swift in Sources */,
+				42CE0C5A29F28BD0008D580D /* iAppTrimApp.swift in Sources */,
+				42CE0C7329F28C72008D580D /* ConfigSettingManager.swift in Sources */,
+				42CE0C6629F28BD2008D580D /* iAppTrim.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		42CE0C6829F28BD2008D580D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		42CE0C6929F28BD2008D580D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		42CE0C6B29F28BD2008D580D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2425D26A12FA73AEE8E682B6 /* Pods-iAppTrim.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iAppTrim/iAppTrim.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"iAppTrim/Preview Content\"";
+				DEVELOPMENT_TEAM = TAH68ZK926;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dujiawei.iAppTrim.iAppTrim;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		42CE0C6C29F28BD2008D580D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FDE1E57A21BD7BC2B264678 /* Pods-iAppTrim.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iAppTrim/iAppTrim.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"iAppTrim/Preview Content\"";
+				DEVELOPMENT_TEAM = TAH68ZK926;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dujiawei.iAppTrim.iAppTrim;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		42CE0C5129F28BD0008D580D /* Build configuration list for PBXProject "iAppTrim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42CE0C6829F28BD2008D580D /* Debug */,
+				42CE0C6929F28BD2008D580D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42CE0C6A29F28BD2008D580D /* Build configuration list for PBXNativeTarget "iAppTrim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42CE0C6B29F28BD2008D580D /* Debug */,
+				42CE0C6C29F28BD2008D580D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		42CE0C6429F28BD2008D580D /* iAppTrim.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				42CE0C6529F28BD2008D580D /* iAppTrim.xcdatamodel */,
+			);
+			currentVersion = 42CE0C6529F28BD2008D580D /* iAppTrim.xcdatamodel */;
+			path = iAppTrim.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 42CE0C4E29F28BD0008D580D /* Project object */;
+}

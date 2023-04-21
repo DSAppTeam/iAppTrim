@@ -1,0 +1,24 @@
+PODS:
+  - AEXML (4.6.1)
+  - PathKit (1.0.1)
+  - xcodeproj (8.8.0):
+    - AEXML (~> 4.6.1)
+    - PathKit (~> 1.0.0)
+
+DEPENDENCIES:
+  - xcodeproj (~> 8.8.0)
+
+SPEC REPOS:
+  trunk:
+    - AEXML
+    - PathKit
+    - xcodeproj
+
+SPEC CHECKSUMS:
+  AEXML: 1e255ecc6597212f97a7454a69ebd3ede64ac1cf
+  PathKit: 83b97c9c61b62e61ecafd598b33b2782575c33e4
+  xcodeproj: 385cccbf342da6a3f8bd2019f7bad8bf235994e9
+
+PODFILE CHECKSUM: a871df02b4e767edc16c8fdc65cceba390abf567
+
+COCOAPODS: 1.12.1
