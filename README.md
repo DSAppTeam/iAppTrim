@@ -22,7 +22,7 @@
 
 （1）项目配置项优化
 
-       主要是针对一些优化配置，比如LLVM_LTO、SWIFT_OPTIMIZATION_LEVEL等，会自动使用xcodeproj工具检测后进行更改。
+       主要是针对一些优化配置，比如LLVM_LTO、SWIFT_OPTIMIZATION_LEVEL等，会自动检测后进行更改。
 ![包大小配置示例.png](https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/包大小配置示例.png)
 
 
@@ -50,7 +50,7 @@
 
 （5）编译速度优化
 
-        主要是针对一些优化配置，比如ASSETCATALOG_COMPILER_OPTIMIZATION，会自动使用xcodeproj工具检测后进行更改。
+        主要是针对一些优化配置，比如ASSETCATALOG_COMPILER_OPTIMIZATION，会自动检测后进行更改。
         
 ![编译速度.png](https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/编译速度.png)
 
