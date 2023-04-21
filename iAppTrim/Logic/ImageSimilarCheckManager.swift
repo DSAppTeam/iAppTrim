@@ -47,14 +47,16 @@ class ImageSimilarCheckManager {
             for case let fileURL as URL in enumerator {
                 // 5. 过滤出PNG文件
                 if fileURL.pathExtension.lowercased() == "png" {
-                    // 6. 处理PNG文件
-                    if let vis = featureprintObservationForImage(atURL: fileUrl), let image = NSImage(contentsOf: fileUrl) {
-                        var size: CGSize = .zero
-                        if let imageRep = image.representations.first as? NSBitmapImageRep {
-                            size = NSSize(width: imageRep.pixelsWide, height: imageRep.pixelsHigh)
+                    autoreleasepool {
+                        // 6. 处理PNG文件
+                        if let vis = featureprintObservationForImage(atURL: fileURL), let image = NSImage(contentsOf: fileURL) {
+                            var size: CGSize = .zero
+                            if let imageRep = image.representations.first as? NSBitmapImageRep {
+                                size = NSSize(width: imageRep.pixelsWide, height: imageRep.pixelsHigh)
+                            }
+                            let model = PngImageModel(path: fileURL, vis: vis, size: size)
+                            allModels.append(model)
                         }
-                        let model = PngImageModel(path: fileURL, vis: vis, size: size)
-                        allModels.append(model)
                     }
                 }
             }

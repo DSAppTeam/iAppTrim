@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42C44D9A29F2983600709EF2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 42C44D9929F2983600709EF2 /* README.md */; };
+		42C44DA029F299CE00709EF2 /* iAppTrim.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42C44D9E29F299CE00709EF2 /* iAppTrim.xcdatamodeld */; };
 		42CE0C5A29F28BD0008D580D /* iAppTrimApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C5929F28BD0008D580D /* iAppTrimApp.swift */; };
 		42CE0C5E29F28BD2008D580D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CE0C5D29F28BD2008D580D /* Assets.xcassets */; };
 		42CE0C6129F28BD2008D580D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CE0C6029F28BD2008D580D /* Preview Assets.xcassets */; };
 		42CE0C6329F28BD2008D580D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C6229F28BD2008D580D /* Persistence.swift */; };
-		42CE0C6629F28BD2008D580D /* iAppTrim.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C6429F28BD2008D580D /* iAppTrim.xcdatamodeld */; };
 		42CE0C7329F28C72008D580D /* ConfigSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C6F29F28C72008D580D /* ConfigSettingManager.swift */; };
 		42CE0C7429F28C72008D580D /* tinypngCompress.js in Resources */ = {isa = PBXBuildFile; fileRef = 42CE0C7029F28C72008D580D /* tinypngCompress.js */; };
 		42CE0C7729F28D78008D580D /* CompileOptimizeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C7629F28D78008D580D /* CompileOptimizeManager.swift */; };
@@ -24,12 +25,13 @@
 /* Begin PBXFileReference section */
 		02905DA33E7D85CE20038866 /* Pods_iAppTrim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iAppTrim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2425D26A12FA73AEE8E682B6 /* Pods-iAppTrim.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAppTrim.debug.xcconfig"; path = "Target Support Files/Pods-iAppTrim/Pods-iAppTrim.debug.xcconfig"; sourceTree = "<group>"; };
+		42C44D9929F2983600709EF2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		42C44D9F29F299CE00709EF2 /* iAppTrim.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iAppTrim.xcdatamodel; sourceTree = "<group>"; };
 		42CE0C5629F28BD0008D580D /* iAppTrim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAppTrim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CE0C5929F28BD0008D580D /* iAppTrimApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iAppTrimApp.swift; sourceTree = "<group>"; };
 		42CE0C5D29F28BD2008D580D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42CE0C6029F28BD2008D580D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		42CE0C6229F28BD2008D580D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		42CE0C6529F28BD2008D580D /* iAppTrim.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iAppTrim.xcdatamodel; sourceTree = "<group>"; };
 		42CE0C6729F28BD2008D580D /* iAppTrim.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iAppTrim.entitlements; sourceTree = "<group>"; };
 		42CE0C6F29F28C72008D580D /* ConfigSettingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigSettingManager.swift; sourceTree = "<group>"; };
 		42CE0C7029F28C72008D580D /* tinypngCompress.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = tinypngCompress.js; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		42CE0C5829F28BD0008D580D /* iAppTrim */ = {
 			isa = PBXGroup;
 			children = (
+				42C44D9929F2983600709EF2 /* README.md */,
 				42CE0C5929F28BD0008D580D /* iAppTrimApp.swift */,
 				42CE0C6229F28BD2008D580D /* Persistence.swift */,
 				42CE0C7E29F29601008D580D /* View */,
@@ -88,7 +91,7 @@
 				42CE0C5D29F28BD2008D580D /* Assets.xcassets */,
 				42CE0C7029F28C72008D580D /* tinypngCompress.js */,
 				42CE0C6729F28BD2008D580D /* iAppTrim.entitlements */,
-				42CE0C6429F28BD2008D580D /* iAppTrim.xcdatamodeld */,
+				42C44D9E29F299CE00709EF2 /* iAppTrim.xcdatamodeld */,
 				42CE0C5F29F28BD2008D580D /* Preview Content */,
 			);
 			path = iAppTrim;
@@ -192,6 +195,7 @@
 			files = (
 				42CE0C6129F28BD2008D580D /* Preview Assets.xcassets in Resources */,
 				42CE0C7429F28C72008D580D /* tinypngCompress.js in Resources */,
+				42C44D9A29F2983600709EF2 /* README.md in Resources */,
 				42CE0C5E29F28BD2008D580D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,11 +252,11 @@
 				42CE0C6329F28BD2008D580D /* Persistence.swift in Sources */,
 				42CE0C7B29F28D85008D580D /* ImageSimilarCheckManager.swift in Sources */,
 				42CE0C7729F28D78008D580D /* CompileOptimizeManager.swift in Sources */,
+				42C44DA029F299CE00709EF2 /* iAppTrim.xcdatamodeld in Sources */,
 				42CE0C7929F28D7F008D580D /* PngCompressManager.swift in Sources */,
 				42CE0C8029F2960F008D580D /* ContentView.swift in Sources */,
 				42CE0C5A29F28BD0008D580D /* iAppTrimApp.swift in Sources */,
 				42CE0C7329F28C72008D580D /* ConfigSettingManager.swift in Sources */,
-				42CE0C6629F28BD2008D580D /* iAppTrim.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,12 +458,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		42CE0C6429F28BD2008D580D /* iAppTrim.xcdatamodeld */ = {
+		42C44D9E29F299CE00709EF2 /* iAppTrim.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				42CE0C6529F28BD2008D580D /* iAppTrim.xcdatamodel */,
+				42C44D9F29F299CE00709EF2 /* iAppTrim.xcdatamodel */,
 			);
-			currentVersion = 42CE0C6529F28BD2008D580D /* iAppTrim.xcdatamodel */;
+			currentVersion = 42C44D9F29F299CE00709EF2 /* iAppTrim.xcdatamodel */;
 			path = iAppTrim.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

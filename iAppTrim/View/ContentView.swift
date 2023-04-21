@@ -16,7 +16,32 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     @State var oldStateText: String = "\n点击上方按钮，即可完成相应的自动优化\n"
-    @State var stateText: String = "\n点击上方按钮，即可完成相应的自动优化\n"
+    @State var stateText: String = ContentView.defaultText()
+    
+    static func defaultText() -> String {
+            """
+                目前主要支持以下功能：
+            （1）包大小优化-项目编译配置优化（选择工程目录下的.xcodeproj文件）：
+                主要是针对一些优化配置，比如LLVM_LTO、SWIFT_OPTIMIZATION_LEVEL等，会自动使用检测后进行更改。
+            
+            （2）包大小优化-Png图片压缩（选择文件夹，即可对文件夹内的所有PNG图片进行高质量的压缩）
+                这里是通过使用Swift Process执行node.js，上传png图片到tinypng进行压缩后替换原文件。
+                因为涉及网络，建议选择所需要的图片压缩，压缩会自动替换掉原图，有需要请备份
+                建议先安装homebrew再执行，执行时会自动检测和安装node，如执行失败，请根据提示进行操作。
+            
+            （3）包大小优化-检测文件夹内所有的重复png图片（图片Size以及外观相同，名字可以不同）
+                重复图片检测，用于删除多余重复的图片，使用Vision框架检测
+            
+            （4）包大小优化-检测文件夹是否已经存在某张png图片，避免重复导入（图片Size以及外观相同，名字可以不同）
+                检测项目内是否已有图片，避免重复导入，使用Vision框架检测
+            
+            （5）编译速度优化-Debug模式下项目编译配置优化
+                主要是针对一些优化配置，比如ASSETCATALOG_COMPILER_OPTIMIZATION，会自动检测后进行更改。
+                效果会跟项目本身有关系，修改的配置均为网上搜索以及OpenAI询问所得。
+            
+                *---------点击上方按钮，即可完成相应的自动优化---------*
+            """
+    }
     
     func selectFile() -> String? {
         let panel = NSOpenPanel()
@@ -139,7 +164,7 @@ struct ContentView: View {
 //                    .buttonStyle(.borderedProminent)
                     
                     //------------------------------------------------//
-                    Button("包大小优化-检测文件夹内所有的重复图片（图片Size以及外观相同，名字可以不同）") {
+                    Button("包大小优化-检测文件夹内所有的重复png图片（图片Size以及外观相同，名字可以不同）") {
                         if let path = selectFloderForURL(message: "请选择需要检测的文件夹") {
                             stateText = "--------检测重复图片ing--------Wait……--------" + "\n"
                             DispatchQueue.main.async {
@@ -155,7 +180,7 @@ struct ContentView: View {
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
                     //------------------------------------------------//
-                    Button("包大小优化-检测文件夹是否已经存在某张图片，避免重复导入（图片Size以及外观相同，名字可以不同）") {
+                    Button("包大小优化-检测文件夹是否已经存在某张png图片，避免重复导入（图片Size以及外观相同，名字可以不同）") {
                         if let checkFile = selectFileForURL(message: "请选择需要检测的的图片", allowedFileTypes: ["png"]) {
                             if let path = selectFloderForURL(message: "请选择需要检测的文件夹") {
                                 stateText = "--------检测重复图片ing--------Wait……--------" + "\n"
@@ -187,11 +212,17 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     //------------------------------------------------//
                     Button {
-                        stateText = "联系方式：394687964@qq.com"
-                        stateText = "git地址：https://github.com/DSAppTeam/iAppTrim"
+                        stateText = ContentView.defaultText()
                     } label: {
-                        Text("有问题更多功能请联系")
-                            .frame(width: 150)
+                        Text("功能使用说明")
+                    }
+                    .controlSize(.large)
+                    .buttonStyle(.borderedProminent)
+                    //------------------------------------------------//
+                    Button {
+                        stateText = "git地址：https://github.com/DSAppTeam/iAppTrim\n联系方式：394687964@qq.com"
+                    } label: {
+                        Text("有疑问或需要更多功能")
                     }
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
