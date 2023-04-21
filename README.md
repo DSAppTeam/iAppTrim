@@ -8,7 +8,6 @@
 
 再如编译配置项，有时候配置项会被误改，或者因为Xcode的升级带来了新的可优化包体大小的配置项，我们就需要去项目中找到并进行修改。
 
-```iAppTrim```
 ![AppIcon.png](https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/AppIcon.png)
 
 针对这些手动操作的优化包体大小方法，我们设计了iAppTrim这一款Mac App，只需要打开App，选择需要优化的项目，即可一键自动优化。
@@ -41,10 +40,10 @@
 
 （4）检测项目内是否已有png图片，避免重复导入，使用Vision框架检测
 
-eg：已存在
+```已存在```
 ![是否存在图片检测示例.png](https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/是否存在图片检测示例.png)
 
-eg：未存在
+```未存在```
 ![重复图片检测不存在示例.png](https://github.com/DSAppTeam/iAppTrim/blob/main/ReadMeSource/重复图片检测不存在示例.png)
 
 （5）编译速度优化
