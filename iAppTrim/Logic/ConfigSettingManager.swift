@@ -63,7 +63,7 @@ class ConfigSettingManager {
                                 handleBlock("SWIFT_OPTIMIZATION_LEVEL已为「-Osize」，无需更改")
                             } else {
                                 config.buildSettings["SWIFT_OPTIMIZATION_LEVEL"] = "-Osize"
-                                handleBlock("GCC_OPTIMIZATION_LEVEL设定项更改为「-Osize」")
+                                handleBlock("SWIFT_OPTIMIZATION_LEVEL设定项更改为「-Osize」")
                             }
                             if let ASSETCATALOG_COMPILER_OPTIMIZATION = config.buildSettings["ASSETCATALOG_COMPILER_OPTIMIZATION"] as? String, ASSETCATALOG_COMPILER_OPTIMIZATION == "space" {
                                 handleBlock("ASSETCATALOG_COMPILER_OPTIMIZATION已为「space」，无需更改")
