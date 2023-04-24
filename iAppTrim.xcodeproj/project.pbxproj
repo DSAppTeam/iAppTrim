@@ -19,6 +19,7 @@
 		42CE0C7929F28D7F008D580D /* PngCompressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C7829F28D7F008D580D /* PngCompressManager.swift */; };
 		42CE0C7B29F28D85008D580D /* ImageSimilarCheckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C7A29F28D85008D580D /* ImageSimilarCheckManager.swift */; };
 		42CE0C8029F2960F008D580D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE0C7F29F2960F008D580D /* ContentView.swift */; };
+		42DC140E29F5265500CA5DA7 /* OpenPanelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC140D29F5265500CA5DA7 /* OpenPanelHelper.swift */; };
 		EA466224EF845DE68603CC4D /* Pods_iAppTrim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02905DA33E7D85CE20038866 /* Pods_iAppTrim.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		42CE0C7829F28D7F008D580D /* PngCompressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PngCompressManager.swift; sourceTree = "<group>"; };
 		42CE0C7A29F28D85008D580D /* ImageSimilarCheckManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSimilarCheckManager.swift; sourceTree = "<group>"; };
 		42CE0C7F29F2960F008D580D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		42DC140D29F5265500CA5DA7 /* OpenPanelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPanelHelper.swift; sourceTree = "<group>"; };
 		7FDE1E57A21BD7BC2B264678 /* Pods-iAppTrim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAppTrim.release.xcconfig"; path = "Target Support Files/Pods-iAppTrim/Pods-iAppTrim.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				42CE0C6F29F28C72008D580D /* ConfigSettingManager.swift */,
 				42CE0C7629F28D78008D580D /* CompileOptimizeManager.swift */,
 				42CE0C7A29F28D85008D580D /* ImageSimilarCheckManager.swift */,
+				42DC140D29F5265500CA5DA7 /* OpenPanelHelper.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				42CE0C6329F28BD2008D580D /* Persistence.swift in Sources */,
 				42CE0C7B29F28D85008D580D /* ImageSimilarCheckManager.swift in Sources */,
 				42CE0C7729F28D78008D580D /* CompileOptimizeManager.swift in Sources */,
+				42DC140E29F5265500CA5DA7 /* OpenPanelHelper.swift in Sources */,
 				42C44DA029F299CE00709EF2 /* iAppTrim.xcdatamodeld in Sources */,
 				42CE0C7929F28D7F008D580D /* PngCompressManager.swift in Sources */,
 				42CE0C8029F2960F008D580D /* ContentView.swift in Sources */,

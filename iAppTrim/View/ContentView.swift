@@ -44,59 +44,6 @@ struct ContentView: View {
             """
     }
     
-    func selectFile() -> String? {
-        let panel = NSOpenPanel()
-        panel.allowsMultipleSelection = false
-        panel.canChooseDirectories = false
-        panel.allowedFileTypes = ["com.apple.xcode.project"]
-        panel.title = "请选择项目"
-        panel.message = "请选择工程目录下的.xcodeproj文件"
-        if panel.runModal() == .OK {
-            let url = panel.url?.relativePath ?? ""
-            return url
-        }
-        return nil
-    }
-    
-    func selectFileForURL(message: String = "", allowedFileTypes: [String]) -> URL? {
-        let panel = NSOpenPanel()
-        panel.allowsMultipleSelection = false
-        panel.canChooseDirectories = false
-        panel.allowedFileTypes = allowedFileTypes
-        panel.message = message
-        if panel.runModal() == .OK {
-            let url = panel.url
-            return url
-        }
-        return nil
-    }
-    
-    func selectFloder() -> String? {
-        let panel = NSOpenPanel()
-        panel.allowsMultipleSelection = false
-        panel.canChooseDirectories = true
-        panel.title = "请选择目录"
-        panel.message = "请选择需要压缩png图片的文件目录"
-        if panel.runModal() == .OK {
-            let url = panel.url?.relativePath ?? ""
-            return url
-        }
-        return nil
-    }
-    
-    func selectFloderForURL(message: String = "") -> URL? {
-        let panel = NSOpenPanel()
-        panel.allowsMultipleSelection = false
-        panel.canChooseDirectories = true
-        panel.title = "请选择目录"
-        panel.message = !message.isEmpty ? message : "请选择需要压缩png图片的文件目录"
-        if panel.runModal() == .OK {
-            let url = panel.url
-            return url
-        }
-        return nil
-    }
-    
     var body: some View {
         
         VSplitView() {
@@ -104,7 +51,7 @@ struct ContentView: View {
                 List() {
                     Button("包大小优化-项目编译配置优化（选择工程目录下的.xcodeproj文件）")
                     {
-                        if let path = selectFile() {
+                        if let path = OpenPanelHelper.selectFile() {
                             ConfigSettingManager().optimizeProjectSetting(path: path) { content in
                                 if let content = content, !content.isEmpty {
                                     stateText = stateText + content + "\n"
@@ -116,7 +63,7 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     //------------------------------------------------//
                     Button("包大小优化-Png图片压缩（选择文件夹，即可对文件夹内的所有PNG图片进行高质量的压缩）") {
-                        if let path = selectFloder() {
+                        if let path = OpenPanelHelper.selectFloder() {
                             let compresser = PngCompressManager()
                             if compresser.checkNodeInstall() {
                                 stateText = stateText + "\n--------已安装node，现在执行压缩选中目录下PNG的指令---------\n"
@@ -166,7 +113,7 @@ struct ContentView: View {
                     
                     //------------------------------------------------//
                     Button("包大小优化-检测文件夹内所有的重复png图片（图片Size以及外观相同，名字可以不同）") {
-                        if let path = selectFloderForURL(message: "请选择需要检测的文件夹") {
+                        if let path = OpenPanelHelper.selectFloderForURL(message: "请选择需要检测的文件夹") {
                             stateText = "--------检测重复图片ing--------Wait……--------" + "\n"
                             DispatchQueue.main.async {
                                 let imageSimilarCheckManager = ImageSimilarCheckManager()
@@ -182,8 +129,8 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     //------------------------------------------------//
                     Button("包大小优化-检测文件夹是否已经存在某张png图片，避免重复导入（图片Size以及外观相同，名字可以不同）") {
-                        if let checkFile = selectFileForURL(message: "请选择需要检测的的图片", allowedFileTypes: ["png"]) {
-                            if let path = selectFloderForURL(message: "请选择需要检测的文件夹") {
+                        if let checkFile = OpenPanelHelper.selectFileForURL(message: "请选择需要检测的的图片", allowedFileTypes: ["png"]) {
+                            if let path = OpenPanelHelper.selectFloderForURL(message: "请选择需要检测的文件夹") {
                                 stateText = "--------检测重复图片ing--------Wait……--------" + "\n"
                                 DispatchQueue.main.async {
                                     let imageSimilarCheckManager = ImageSimilarCheckManager()
@@ -200,7 +147,7 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     //------------------------------------------------//
                     Button("编译速度优化-Debug模式下项目编译配置优化") {
-                        if let path = selectFile() {
+                        if let path = OpenPanelHelper.selectFile() {
                             let compileOptimizeManager = CompileOptimizeManager()
                             compileOptimizeManager.optimizeCompileSpeedForDebug(path: path) { content in
                                 if let content = content, !content.isEmpty {
