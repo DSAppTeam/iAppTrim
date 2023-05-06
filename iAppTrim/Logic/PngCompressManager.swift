@@ -10,6 +10,7 @@ import Foundation
 class PngCompressManager {
     
     func checkNodeInstall() -> Bool {
+
         let task = Process()
         task.launchPath = "/bin/zsh"
         task.arguments = ["-l", "-c", "which node"]
@@ -85,59 +86,66 @@ class PngCompressManager {
     }
     
     func compress(with path: String, handleBlock: @escaping StringHandlingBlock) {
-        let task = Process()
-        task.launchPath = "/bin/zsh"
-        task.arguments = ["-l", "-c", "which node"]
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.launch()
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let nodePath = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
-        task.waitUntilExit()
-        task.terminate()
         
-        if let nodePath = nodePath, let jsSourcePath = Bundle.main.path(forResource: "tinypngCompress", ofType: "js") {
-            // 找到node
-            handleBlock("--------开始压缩PNG!---------\n")
+        DispatchQueue.global(qos: .default).async {
             let task = Process()
-            let executableURL = URL(fileURLWithPath: nodePath)
-            task.executableURL = executableURL
-            task.arguments = [jsSourcePath, path]
-            let outputPipe = Pipe()
-            task.standardOutput = outputPipe
-            let errorPipe = Pipe()
-            task.standardError = errorPipe
-            let outputHandle = outputPipe.fileHandleForReading
-            let errorHandle = errorPipe.fileHandleForReading
+            task.launchPath = "/bin/zsh"
+            task.arguments = ["-l", "-c", "which node"]
+            let pipe = Pipe()
+            task.standardOutput = pipe
             task.launch()
-            
-            var totalCount = 0
-            var currentCount = 0
-            NotificationCenter.default.addObserver(forName: FileHandle.readCompletionNotification, object: outputHandle, queue: nil) { notification in
-                guard let handle = notification.object as? FileHandle, let data = notification.userInfo?[NSFileHandleNotificationDataItem] as? Data else { return }
-                if data.count > 0 {
-                    let message = String(data: data, encoding: String.Encoding.utf8)!
-                    // 处理输出信息
-                    handleBlock(message)
-                }
-                handle.readInBackgroundAndNotify()
-            }
-            NotificationCenter.default.addObserver(forName: FileHandle.readCompletionNotification, object: errorHandle, queue: nil) { notification in
-                guard let handle = notification.object as? FileHandle, let data = notification.userInfo?[NSFileHandleNotificationDataItem] as? Data else { return }
-                if data.count > 0 {
-                    let message = String(data: data, encoding: String.Encoding.utf8)!
-                    // 处理错误信息
-                    handleBlock(message)
-                }
-                handle.readInBackgroundAndNotify()
-            }
-            
-            outputHandle.readInBackgroundAndNotify()
-            errorHandle.readInBackgroundAndNotify()
-            
+            let data = pipe.fileHandleForReading.readDataToEndOfFile()
+            let nodePath = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
             task.waitUntilExit()
             task.terminate()
-            NotificationCenter.default.removeObserver(self)
+            
+            if let nodePath = nodePath, let jsSourcePath = Bundle.main.path(forResource: "tinypngCompress", ofType: "js") {
+                // 找到node
+                handleBlock("--------开始压缩PNG!---------\n")
+                let task = Process()
+                let executableURL = URL(fileURLWithPath: nodePath)
+                task.executableURL = executableURL
+                task.arguments = [jsSourcePath, path]
+                let outputPipe = Pipe()
+                task.standardOutput = outputPipe
+                let errorPipe = Pipe()
+                task.standardError = errorPipe
+                let outputHandle = outputPipe.fileHandleForReading
+                let errorHandle = errorPipe.fileHandleForReading
+                task.launch()
+                
+                var totalCount = 0
+                var currentCount = 0
+                NotificationCenter.default.addObserver(forName: FileHandle.readCompletionNotification, object: outputHandle, queue: nil) { notification in
+                    guard let handle = notification.object as? FileHandle, let data = notification.userInfo?[NSFileHandleNotificationDataItem] as? Data else { return }
+                    if data.count > 0 {
+                        let message = String(data: data, encoding: String.Encoding.utf8)!
+                        // 处理输出信息
+                        DispatchQueue.main.async {
+                            handleBlock(message)
+                        }
+                    }
+                    handle.readInBackgroundAndNotify()
+                }
+                NotificationCenter.default.addObserver(forName: FileHandle.readCompletionNotification, object: errorHandle, queue: nil) { notification in
+                    guard let handle = notification.object as? FileHandle, let data = notification.userInfo?[NSFileHandleNotificationDataItem] as? Data else { return }
+                    if data.count > 0 {
+                        let message = String(data: data, encoding: String.Encoding.utf8)!
+                        // 处理错误信息
+                        DispatchQueue.main.async {
+                            handleBlock(message)
+                        }
+                    }
+                    handle.readInBackgroundAndNotify()
+                }
+                
+                outputHandle.readInBackgroundAndNotify()
+                errorHandle.readInBackgroundAndNotify()
+                
+                task.waitUntilExit()
+                task.terminate()
+                NotificationCenter.default.removeObserver(self)
+            }
         }
         
     }

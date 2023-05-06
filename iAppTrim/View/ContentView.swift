@@ -41,6 +41,8 @@ struct ContentView: View {
             
                 *---------点击上方按钮，即可完成相应的自动优化---------*
             
+            git地址：https://github.com/DSAppTeam/iAppTrim\n联系方式：394687964@qq.com
+            
             """
     }
     
@@ -49,6 +51,26 @@ struct ContentView: View {
         VSplitView() {
             HSplitView() {
                 List() {
+                    //------------------------------------------------//
+//                    HStack {
+//                        Text("当前选择项目Git目录路径：")
+//                        Button("切换项目仓库")
+//                        {
+//                            if let path = OpenPanelHelper.selectFloder() {
+//
+//                            }
+//                        }
+//                    }
+                    //------------------------------------------------//
+//                    Button("一键包大小优化")
+//                    {
+//                        if let path = OpenPanelHelper.selectFile() {
+//
+//                        }
+//                    }
+//                    .controlSize(.large)
+//                    .buttonStyle(.borderedProminent)
+                    //------------------------------------------------//
                     Button("包大小优化-项目编译配置优化（选择工程目录下的.xcodeproj文件）")
                     {
                         if let path = OpenPanelHelper.selectFile() {
@@ -98,20 +120,6 @@ struct ContentView: View {
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
                     //------------------------------------------------//
-                    
-//                    Button("包大小优化-一键优化（自动执行工程目录下的编译配置项优化以及PNG图片压缩）") {
-//                        stateText = "功能尚未支持"
-//                    }
-//                    .controlSize(.large)
-//                    .buttonStyle(.borderedProminent)
-                    
-//                    Button("包大小输出（请提前配置好项目证书）") {
-//                        stateText = "功能尚未支持"
-//                    }
-//                    .controlSize(.large)
-//                    .buttonStyle(.borderedProminent)
-                    
-                    //------------------------------------------------//
                     Button("包大小优化-检测文件夹内所有的重复png图片（图片Size以及外观相同，名字可以不同）") {
                         if let path = OpenPanelHelper.selectFloderForURL(message: "请选择需要检测的文件夹") {
                             stateText = "--------检测重复图片ing--------Wait……--------" + "\n"
@@ -146,31 +154,45 @@ struct ContentView: View {
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
                     //------------------------------------------------//
-                    Button("编译速度优化-Debug模式下项目编译配置优化") {
-                        if let path = OpenPanelHelper.selectFile() {
-                            let compileOptimizeManager = CompileOptimizeManager()
-                            compileOptimizeManager.optimizeCompileSpeedForDebug(path: path) { content in
-                                if let content = content, !content.isEmpty {
-                                    stateText = stateText + content + "\n"
-                                }
-                            }
-                        }
-                    }
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
+//                    Button("包大小优化-LinkMap分析大小") {
+//
+//                    }
+//                    .controlSize(.large)
+//                    .buttonStyle(.borderedProminent)
                     //------------------------------------------------//
-                    Button {
+//                    Button("包大小优化-无用类扫描") {
+//
+//                    }
+//                    .controlSize(.large)
+//                    .buttonStyle(.borderedProminent)
+                    //------------------------------------------------//
+//                    Button("编译速度优化-Debug模式下项目编译配置优化") {
+//                        if let path = OpenPanelHelper.selectFile() {
+//                            let compileOptimizeManager = CompileOptimizeManager()
+//                            compileOptimizeManager.optimizeCompileSpeedForDebug(path: path) { content in
+//                                if let content = content, !content.isEmpty {
+//                                    stateText = stateText + content + "\n"
+//                                }
+//                            }
+//                        }
+//                    }
+//                    .controlSize(.large)
+//                    .buttonStyle(.borderedProminent)
+                    //------------------------------------------------//
+                    Button("功能使用说明") {
                         stateText = ContentView.defaultText()
-                    } label: {
-                        Text("功能使用说明")
                     }
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
                     //------------------------------------------------//
-                    Button {
-                        stateText = "git地址：https://github.com/DSAppTeam/iAppTrim\n联系方式：394687964@qq.com"
-                    } label: {
-                        Text("有疑问或需要更多功能")
+//                    Button("有疑问或需要更多功能") {
+//                        stateText = "git地址：https://github.com/DSAppTeam/iAppTrim\n联系方式：394687964@qq.com"
+//                    }
+//                    .controlSize(.large)
+//                    .buttonStyle(.borderedProminent)
+                    //------------------------------------------------//
+                    Button("输出信息清空") {
+                        stateText = ""
                     }
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
@@ -179,14 +201,17 @@ struct ContentView: View {
             VStack {
                 Text("输出信息")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
-                ScrollView {
-                    Text(stateText)
-                        .textSelection(.enabled)
-                        .lineSpacing(2)
-                        .lineLimit(nil)
-                        .multilineTextAlignment(.leading)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                }
+                TextEditor(text: .constant(self.stateText))
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+//                ScrollView {
+//                    Text(stateText)
+//                        .font(.system(size: 12))
+//                        .textSelection(.enabled)
+//                        .lineSpacing(2)
+//                        .lineLimit(nil)
+//                        .multilineTextAlignment(.leading)
+//                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+//                }
             }
         }
     }

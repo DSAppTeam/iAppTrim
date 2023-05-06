@@ -6,6 +6,9 @@ const EventEmitter = require('events');
 const err = msg => new EventEmitter().emit('error', msg);
 var allDecreaseSize = 0;
 var compressTime = 0;
+var compressedCount = 0;
+var nextCompressedCount = 0;
+var maxCountOnce = 100;
 const conf = {
     files: [],
     EntryFolder: process.argv[2],
@@ -18,7 +21,17 @@ fileFilter(conf.EntryFolder)
 var compressTotalTime = conf.files.length;
 console.log("等待压缩图片的数量:", conf.files.length)
 
-conf.files.forEach(img => fileUpload(img));
+if (conf.files.length > maxCountOnce) {
+    nextCompressedCount = maxCountOnce
+} else {
+    nextCompressedCount = conf.files.length
+}
+
+for (let i = 0; i < nextCompressedCount; i++) {
+    fileUpload(conf.files[i])
+}
+
+//conf.files.forEach(img => fileUpload(img));
 
 //////////////////////////////// 工具函数
 
@@ -72,12 +85,32 @@ function getAjaxOptions() {
 function fileUpload(imgPath) {
     let req = https.request(getAjaxOptions(), (res) => {
         res.on('data', buf => {
-            let obj = JSON.parse(buf.toString());
-            if (obj.error) {
+            try {
+                let obj = JSON.parse(buf.toString());
+                if (obj.error) {
+                    compressTime += 1;
+                    console.log(`压缩失败！\n 当前文件：${imgPath} \n ${obj.message}`);
+                } else {
+                    fileUpdate(imgPath, obj);
+                }
+            } catch (e) {
                 compressTime += 1;
-                console.log(`压缩失败！\n 当前文件：${imgPath} \n ${obj.message}`);
-            } else {
-                fileUpdate(imgPath, obj);
+                console.log(`压缩失败！\n 当前文件：${imgPath} \n ${e.message}`);
+            }
+            
+            compressedCount += 1;
+            if (nextCompressedCount == compressedCount) {
+                // 压完了一批
+                if (compressedCount < conf.files.length) {
+                    if (nextCompressedCount + maxCountOnce < conf.files.length) {
+                        nextCompressedCount = nextCompressedCount + maxCountOnce
+                    } else {
+                        nextCompressedCount = conf.files.length
+                    }
+                    for (let i = compressedCount; i < nextCompressedCount; i++) {
+                        fileUpload(conf.files[i])
+                    }
+                }
             }
         });
     });
@@ -113,7 +146,7 @@ function fileUpdate(entryImgPath, obj) {
                 console.log(log);
                 if (compressTime == compressTotalTime && compressTotalTime != -1) {
                     compressTotalTime = -1
-                    console.log(`--------压缩已结束--------累计缩减大小=${ allDecreaseSize.toFixed(2) }KB`)
+                    console.log(`--------压缩已结束--------原总图片大小=${ obj.input.size.toFixed(2) }KB--------压缩后总图片大小=${ obj.output.size.toFixed(2) }KB----累计缩减大小=${ allDecreaseSize.toFixed(2) }KB`)
                 }
             });
         });
