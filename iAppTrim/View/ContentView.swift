@@ -20,7 +20,9 @@ struct ContentView: View {
     
     static func defaultText() -> String {
             """
-                目前主要支持以下功能：
+            
+            本项目功能主要是包大小一键优化，自动执行以下功能，主要包含如下：
+            
             （1）包大小优化-项目编译配置优化（选择工程目录下的.xcodeproj文件）：
                 主要是针对一些优化配置，比如LLVM_LTO、SWIFT_OPTIMIZATION_LEVEL等，会自动使用检测后进行更改。
             
@@ -35,11 +37,15 @@ struct ContentView: View {
             （4）包大小优化-检测文件夹是否已经存在某张png图片，避免重复导入（图片Size以及外观相同，名字可以不同）
                 检测项目内是否已有图片，避免重复导入，使用Vision框架检测
             
-            （5）编译速度优化-Debug模式下项目编译配置优化
+            （5）包大小优化-LinkMap分析
+                分体包体内容占比大小，根据分析结果删减业务代码
+            
+            （6）包大小优化-无用类分析
+                通过otool工具进行分析包体可执行文件，分析出无用类
+            
+            （7）编译速度优化-Debug模式下项目编译配置优化
                 主要是针对一些优化配置，比如ASSETCATALOG_COMPILER_OPTIMIZATION，会自动检测后进行更改。
                 效果会跟项目本身有关系，修改的配置均为网上搜索以及OpenAI询问所得。
-            
-                *---------点击上方按钮，即可完成相应的自动优化---------*
             
             git地址：https://github.com/DSAppTeam/iAppTrim\n联系方式：394687964@qq.com
             
@@ -47,85 +53,75 @@ struct ContentView: View {
     }
     
     var body: some View {
-        
         VSplitView() {
-            HSplitView() {
-                List() {
-                    //------------------------------------------------//
-//                    HStack {
-//                        Text("当前选择项目Git目录路径：")
-//                        Button("切换项目仓库")
-//                        {
-//                            if let path = OpenPanelHelper.selectFloder() {
-//
-//                            }
-//                        }
-//                    }
-                    //------------------------------------------------//
-//                    Button("一键包大小优化")
-//                    {
-//                        if let path = OpenPanelHelper.selectFile() {
-//
-//                        }
-//                    }
-//                    .controlSize(.large)
-//                    .buttonStyle(.borderedProminent)
-                    //------------------------------------------------//
-                    Button("包大小优化-项目编译配置优化（选择工程目录下的.xcodeproj文件）")
+            List() {
+                //------------------------------------------------//
+                HStack {
+                    Text("当前选择项目Git目录路径：")
+                    Button("切换项目仓库")
                     {
-                        if let path = OpenPanelHelper.selectFile() {
-                            ConfigSettingManager().optimizeProjectSetting(path: path) { content in
+                        stateText = "暂不支持使用此功能"
+                        return
+//                        if let path = OpenPanelHelper.selectFloder() {
+//
+//                        }
+                    }
+                }
+                //------------------------------------------------//
+                Button("一键包大小优化")
+                {
+                    stateText = "暂不支持使用此功能"
+                    return
+                    //executePngCompress()
+                }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                //------------------------------------------------//
+                Button("包大小优化-项目编译配置优化（选择工程目录下的.xcodeproj文件）")
+                {
+                    // 选择.xcodeproj文件
+                    if let path = OpenPanelHelper.selectFile() {
+                        // 开始解析并优化
+                        ConfigSettingManager().optimizeProjectSetting(path: path) { content in
+                            if let content = content, !content.isEmpty {
+                                // 输出优化结果
+                                stateText = stateText + content + "\n"
+                            }
+                        }
+                    }
+                }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                //------------------------------------------------//
+                Button("包大小优化-Png图片压缩（选择文件夹，即可对文件夹内的所有PNG图片进行高质量的压缩）") {
+                    executePngCompress()
+                }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                //------------------------------------------------//
+                Button("包大小优化-检测文件夹内所有的重复png图片（图片Size以及外观相同，名字可以不同）") {
+                    if let path = OpenPanelHelper.selectFloderForURL(message: "请选择需要检测的文件夹") {
+                        stateText = "--------检测重复图片ing--------Wait……--------" + "\n"
+                        DispatchQueue.main.async {
+                            let imageSimilarCheckManager = ImageSimilarCheckManager()
+                            imageSimilarCheckManager.scanPng(from: path) { content in
                                 if let content = content, !content.isEmpty {
                                     stateText = stateText + content + "\n"
                                 }
                             }
                         }
                     }
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
-                    //------------------------------------------------//
-                    Button("包大小优化-Png图片压缩（选择文件夹，即可对文件夹内的所有PNG图片进行高质量的压缩）") {
-                        if let path = OpenPanelHelper.selectFloder() {
-                            let compresser = PngCompressManager()
-                            if compresser.checkNodeInstall() {
-                                stateText = stateText + "\n--------已安装node，现在执行压缩选中目录下PNG的指令---------\n"
-                                compresser.compress(with: path, handleBlock: { content in
-                                    stateText = stateText + (content ?? "")
-                                })
-                            } else {
-                                stateText = "------未安装node------"
-                                let installHomeBrew = compresser.checkHomeBrewInstall()
-                                if installHomeBrew {
-                                    stateText = "------已安装homebrew，使用brew进行安装node------"
-                                    let result = compresser.installNodeJs { content in
-                                        // 拿出来计算下总减少的kb
-                                        stateText = stateText + "\n"
-                                        stateText = stateText + (content ?? "")
-                                    }
-                                    if result {
-                                        // 安装成功
-                                        stateText = stateText + "\n--------已安装node，现在执行压缩选中目录下PNG的指令---------\n"
-                                        compresser.compress(with: path, handleBlock: { content in
-                                            stateText = stateText + (content ?? "")
-                                        })
-                                    }
-                                } else {
-                                    stateText = stateText + "------未安装homebrew，请自行安装homebrew或node后再使用png图片压缩功能------\n"
-                                    stateText = stateText + "https://brew.sh/index_zh-cn\n"
-                                    stateText = stateText + "https://nodejs.dev/en/learn/how-to-install-nodejs\n"
-                                }
-                            }
-                        }
-                    }
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
-                    //------------------------------------------------//
-                    Button("包大小优化-检测文件夹内所有的重复png图片（图片Size以及外观相同，名字可以不同）") {
+                }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                //------------------------------------------------//
+                Button("包大小优化-检测文件夹是否已经存在某张png图片，避免重复导入（图片Size以及外观相同，名字可以不同）") {
+                    if let checkFile = OpenPanelHelper.selectFileForURL(message: "请选择需要检测的的图片", allowedFileTypes: ["png"]) {
                         if let path = OpenPanelHelper.selectFloderForURL(message: "请选择需要检测的文件夹") {
                             stateText = "--------检测重复图片ing--------Wait……--------" + "\n"
                             DispatchQueue.main.async {
                                 let imageSimilarCheckManager = ImageSimilarCheckManager()
-                                imageSimilarCheckManager.scanPng(from: path) { content in
+                                imageSimilarCheckManager.checkImageExist(fileUrl: checkFile, folderUrl: path) { content in
                                     if let content = content, !content.isEmpty {
                                         stateText = stateText + content + "\n"
                                     }
@@ -133,70 +129,52 @@ struct ContentView: View {
                             }
                         }
                     }
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
-                    //------------------------------------------------//
-                    Button("包大小优化-检测文件夹是否已经存在某张png图片，避免重复导入（图片Size以及外观相同，名字可以不同）") {
-                        if let checkFile = OpenPanelHelper.selectFileForURL(message: "请选择需要检测的的图片", allowedFileTypes: ["png"]) {
-                            if let path = OpenPanelHelper.selectFloderForURL(message: "请选择需要检测的文件夹") {
-                                stateText = "--------检测重复图片ing--------Wait……--------" + "\n"
-                                DispatchQueue.main.async {
-                                    let imageSimilarCheckManager = ImageSimilarCheckManager()
-                                    imageSimilarCheckManager.checkImageExist(fileUrl: checkFile, folderUrl: path) { content in
-                                        if let content = content, !content.isEmpty {
-                                            stateText = stateText + content + "\n"
-                                        }
-                                    }
-                                }
+                }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                //------------------------------------------------//
+                Button("包大小优化-LinkMap分析大小") {
+                    stateText = "暂不支持使用此功能"
+                }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                //------------------------------------------------//
+                Button("包大小优化-无用类扫描") {
+                    stateText = "暂不支持使用此功能"
+                }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                //------------------------------------------------//
+                Button("编译速度优化-Debug模式下项目编译配置优化") {
+                    if let path = OpenPanelHelper.selectFile() {
+                        let compileOptimizeManager = CompileOptimizeManager()
+                        compileOptimizeManager.optimizeCompileSpeedForDebug(path: path) { content in
+                            if let content = content, !content.isEmpty {
+                                stateText = stateText + content + "\n"
                             }
                         }
                     }
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
-                    //------------------------------------------------//
-//                    Button("包大小优化-LinkMap分析大小") {
-//
-//                    }
-//                    .controlSize(.large)
-//                    .buttonStyle(.borderedProminent)
-                    //------------------------------------------------//
-//                    Button("包大小优化-无用类扫描") {
-//
-//                    }
-//                    .controlSize(.large)
-//                    .buttonStyle(.borderedProminent)
-                    //------------------------------------------------//
-//                    Button("编译速度优化-Debug模式下项目编译配置优化") {
-//                        if let path = OpenPanelHelper.selectFile() {
-//                            let compileOptimizeManager = CompileOptimizeManager()
-//                            compileOptimizeManager.optimizeCompileSpeedForDebug(path: path) { content in
-//                                if let content = content, !content.isEmpty {
-//                                    stateText = stateText + content + "\n"
-//                                }
-//                            }
-//                        }
-//                    }
-//                    .controlSize(.large)
-//                    .buttonStyle(.borderedProminent)
-                    //------------------------------------------------//
-                    Button("功能使用说明") {
-                        stateText = ContentView.defaultText()
-                    }
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
-                    //------------------------------------------------//
+                }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                //------------------------------------------------//
+                Button("功能使用说明") {
+                    stateText = ContentView.defaultText()
+                }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                //------------------------------------------------//
 //                    Button("有疑问或需要更多功能") {
 //                        stateText = "git地址：https://github.com/DSAppTeam/iAppTrim\n联系方式：394687964@qq.com"
 //                    }
 //                    .controlSize(.large)
 //                    .buttonStyle(.borderedProminent)
-                    //------------------------------------------------//
-                    Button("输出信息清空") {
-                        stateText = ""
-                    }
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
-                }
+                //------------------------------------------------//
+//                    Button("输出信息清空") {
+//                        stateText = ""
+//                    }
+//                    .controlSize(.large)
+//                    .buttonStyle(.borderedProminent)
             }
             VStack {
                 Text("输出信息")
@@ -212,6 +190,40 @@ struct ContentView: View {
 //                        .multilineTextAlignment(.leading)
 //                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
 //                }
+            }
+        }
+    }
+    
+    func executePngCompress() {
+        if let path = OpenPanelHelper.selectFloder() {
+            let compresser = PngCompressManager()
+            if compresser.checkNodeInstall() {
+                stateText = stateText + "\n--------已安装node，现在执行压缩选中目录下PNG的指令---------\n"
+                compresser.compress(with: path, handleBlock: { content in
+                    stateText = stateText + (content ?? "")
+                })
+            } else {
+                stateText = "------未安装node------"
+                let installHomeBrew = compresser.checkHomeBrewInstall()
+                if installHomeBrew {
+                    stateText = "------已安装homebrew，使用brew进行安装node------"
+                    let result = compresser.installNodeJs { content in
+                        // 拿出来计算下总减少的kb
+                        stateText = stateText + "\n"
+                        stateText = stateText + (content ?? "")
+                    }
+                    if result {
+                        // 安装成功
+                        stateText = stateText + "\n--------已安装node，现在执行压缩选中目录下PNG的指令---------\n"
+                        compresser.compress(with: path, handleBlock: { content in
+                            stateText = stateText + (content ?? "")
+                        })
+                    }
+                } else {
+                    stateText = stateText + "------未安装homebrew，请自行安装homebrew或node后再使用png图片压缩功能------\n"
+                    stateText = stateText + "https://brew.sh/index_zh-cn\n"
+                    stateText = stateText + "https://nodejs.dev/en/learn/how-to-install-nodejs\n"
+                }
             }
         }
     }

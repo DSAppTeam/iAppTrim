@@ -13,9 +13,12 @@ typealias StringHandlingBlock = (_ content: String?) -> ()
 class ConfigSettingManager {
     func optimizeProjectSetting(path: String, handleBlock: @escaping StringHandlingBlock) {
         do {
+            // 获取project路径
             let path = Path(path)
+            // 根据路径获取 XcodeProj 对象
             let xcodeproj = try XcodeProj(path: path)
             handleBlock("-----------配置更新开始----------\n")
+            // 遍历 XcodeProj 的所有 Target
             for target in xcodeproj.pbxproj.nativeTargets {
                 if let buildConfigurationList = target.buildConfigurationList {
                     handleBlock("------------开始检查Target：" + target.name + " 的Release配置项------------")
