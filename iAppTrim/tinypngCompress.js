@@ -8,7 +8,7 @@ var allDecreaseSize = 0;
 var compressTime = 0;
 var compressedCount = 0;
 var nextCompressedCount = 0;
-var maxCountOnce = 100;
+var maxCountOnce = 1;
 const conf = {
     files: [],
     EntryFolder: process.argv[2],
@@ -107,9 +107,7 @@ function fileUpload(imgPath) {
                     } else {
                         nextCompressedCount = conf.files.length
                     }
-                    for (let i = compressedCount; i < nextCompressedCount; i++) {
-                        fileUpload(conf.files[i])
-                    }
+                    uploadFiles(compressedCount, nextCompressedCount)
                 }
             }
         });
@@ -118,6 +116,13 @@ function fileUpload(imgPath) {
     req.write(fs.readFileSync(imgPath), 'binary');
     req.on('error', e => console.error(`请求错误! \n 当前文件：${imgPath} \n, e`));
     req.end();
+}
+
+async function uploadFiles(compressedCount, nextCompressedCount) {
+  await new Promise((resolve) => setTimeout(resolve, 5000)); // 添加 5s 的延迟
+  for (let i = compressedCount; i < nextCompressedCount; i++) {
+    await fileUpload(conf.files[i]);
+  }
 }
 
 // 该方法被循环调用,请求图片数据
